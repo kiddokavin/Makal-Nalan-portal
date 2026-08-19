@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ta-IN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makkal Nalan | மக்கள் நலன்</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Mukta+Malar:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle Theme">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="app-container">
+        <!-- Logo and Branding Header -->
+        <header class="main-header">
+            <div class="logo-area">
+                <div class="logo-emblem">TVK</div>
+                <div class="branding-text">
+                    <h1>மக்கள் நலன்</h1>
+                    <h2>MAKKAL NALAN</h2>
+                    <p class="it-wing-tag"><i class="fab fa-instagram"></i> Powered by: @26_tvk_it_wing_</p>
+                </div>
+            </div>
+            <div class="portal-badge">
+                <span class="badge-title">மக்கள் குறைதீர்ப்பு பிரிவு</span>
+                <span class="badge-subtitle">PUBLIC GRIEVANCE CELL</span>
+            </div>
+        </header>
+
+        <!-- Main Form Container -->
+        <main class="form-card">
+            <!-- Stepper Progress Header -->
+            <div class="stepper-wrapper">
+                <div class="stepper-item active" id="step1-indicator">
+                    <div class="step-counter"><i class="fas fa-user"></i></div>
+                    <div class="step-label">
+                        <span>விவரங்கள்</span>
+                        <small>Personal Info</small>
+                    </div>
+                </div>
+                <div class="stepper-item" id="step2-indicator">
+                    <div class="step-counter"><i class="fas fa-file-alt"></i></div>
+                    <div class="step-label">
+                        <span>புகார் விவரங்கள்</span>
+                        <small>Grievance Info</small>
+                    </div>
+                </div>
+                <div class="stepper-item" id="step3-indicator">
+                    <div class="step-counter"><i class="fas fa-check-double"></i></div>
+                    <div class="step-label">
+                        <span>சரிபார்த்தல்</span>
+                        <small>Review & Submit</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Steps Form -->
+            <form id="grievanceForm" novalidate>
+                <!-- STEP 1: Personal Info -->
+                <div class="form-step active" id="step-1">
+                    <h3 class="step-title">1. தனிநபர் விவரங்கள் / Personal Details</h3>
+                    <p class="step-desc">உங்கள் தொடர்பு விவரங்களை சரியாக உள்ளிடவும். (All fields marked with * are required)</p>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">முழு பெயர் / Full Name <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user-circle input-icon"></i>
+                                <input type="text" id="name" name="name" placeholder="உங்கள் பெயர்" required>
+                            </div>
+                            <span class="error-msg" id="name-error">பெயர் தேவை / Name is required</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact">கைபேசி எண் / Contact Number <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-phone input-icon"></i>
+                                <input type="tel" id="contact" name="contact" placeholder="10 இலக்க எண்" pattern="[0-9]{10}" required>
+                            </div>
+                            <span class="error-msg" id="contact-error">முறையான கைபேசி எண் தேவை / Valid 10-digit number is required</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">மின்னஞ்சல் முகவரி / Email (Optional)</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="email" name="email" placeholder="example@domain.com">
+                            </div>
+                            <span class="error-msg" id="email-error">முறையான மின்னஞ்சல் தேவை / Valid email required</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="district">மாவட்டம் / District <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-map-marker-alt input-icon"></i>
+                                <select id="district" name="district" required>
+                                    <option value="" disabled selected>மாவட்டம் தேர்ந்தெடுக்கவும்</option>
+                                    <option value="அரியலூர் / Ariyalur">அரியலூர் / Ariyalur</option>
+                                    <option value="செங்கல்பட்டு / Chengalpattu">செங்கல்பட்டு / Chengalpattu</option>
+                                    <option value="சென்னை / Chennai">சென்னை / Chennai</option>
+                                    <option value="கோயம்புத்தூர் / Coimbatore">கோயம்புத்தூர் / Coimbatore</option>
+                                    <option value="கடலூர் / Cuddalore">கடலூர் / Cuddalore</option>
+                                    <option value="தருமபுரி / Dharmapuri">தருமபுரி / Dharmapuri</option>
+                                    <option value="திண்டுக்கல் / Dindigul">திண்டுக்கல் / Dindigul</option>
+                                    <option value="ஈரோடு / Erode">ஈரோடு / Erode</option>
+                                    <option value="கள்ளக்குறிச்சி / Kallakurichi">கள்ளக்குறிச்சி / Kallakurichi</option>
+                                    <option value="காஞ்சிபுரம் / Kancheepuram">காஞ்சிபுரம் / Kancheepuram</option>
+                                    <option value="கரூர் / Karur">கரூர் / Karur</option>
+                                    <option value="கிருஷ்ணகிரி / Krishnagiri">கிருஷ்ணகிரி / Krishnagiri</option>
+                                    <option value="மதுரை / Madurai">மதுரை / Madurai</option>
+                                    <option value="மயிலாடுதுறை / Mayiladuthurai">மயிலாடுதுறை / Mayiladuthurai</option>
+                                    <option value="நாகப்பட்டினம் / Nagapattinam">நாகப்பட்டினம் / Nagapattinam</option>
+                                    <option value="நாமக்கல் / Namakkal">நாமக்கல் / Namakkal</option>
+                                    <option value="நீலகிரி / Nilgiris">நீலகிரி / Nilgiris</option>
+                                    <option value="பெரம்பலூர் / Perambalur">பெரம்பலூர் / Perambalur</option>
+                                    <option value="புதுக்கோட்டை / Pudukkottai">புதுக்கோட்டை / Pudukkottai</option>
+                                    <option value="இராமநாதபுரம் / Ramanathapuram">இராமநாதபுரம் / Ramanathapuram</option>
+                                    <option value="இராணிப்பேட்டை / Ranipet">இராணிப்பேட்டை / Ranipet</option>
+                                    <option value="சேலம் / Salem">சேலம் / Salem</option>
+                                    <option value="சிவகங்கை / Sivagangai">சிவகங்கை / Sivagangai</option>
+                                    <option value="தென்காசி / Tenkasi">தென்காசி / Tenkasi</option>
+                                    <option value="தஞ்சாவூர் / Thanjavur">தஞ்சாவூர் / Thanjavur</option>
+                                    <option value="தேனி / Theni">தேனி / Theni</option>
+                                    <option value="தூத்துக்குடி / Thoothukudi">தூத்துக்குடி / Thoothukudi</option>
+                                    <option value="திருச்சிராப்பள்ளி / Tiruchirappalli">திருச்சிராப்பள்ளி / Tiruchirappalli</option>
+                                    <option value="திருநெல்வேலி / Tirunelveli">திருநெல்வேலி / Tirunelveli</option>
+                                    <option value="திருப்பத்தூர் / Tirupathur">திருப்பத்தூர் / Tirupathur</option>
+                                    <option value="திருப்பூர் / Tiruppur">திருப்பூர் / Tiruppur</option>
+                                    <option value="திருவள்ளூர் / Tiruvallur">திருவள்ளூர் / Tiruvallur</option>
+                                    <option value="திருவண்ணாமலை / Tiruvannamalai">திருவண்ணாமலை / Tiruvannamalai</option>
+                                    <option value="திருவாரூர் / Tiruvarur">திருவாரூர் / Tiruvarur</option>
+                                    <option value="வேலூர் / Vellore">வேலூர் / Vellore</option>
+                                    <option value="விழுப்புரம் / Viluppuram">விழுப்புரம் / Viluppuram</option>
+                                    <option value="விருதுநகர் / Virudhunagar">விருதுநகர் / Virudhunagar</option>
+                                </select>
+                            </div>
+                            <span class="error-msg" id="district-error">மாவட்டம் தேர்ந்தெடுக்கவும் / District is required</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="address">முழு முகவரி / Full Address <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-home input-icon"></i>
+                            <textarea id="address" name="address" rows="3" placeholder="கதவு எண், தெரு பெயர், பகுதி, அஞ்சல் குறியீடு" required></textarea>
+                        </div>
+                        <span class="error-msg" id="address-error">முகவரி தேவை / Address is required</span>
+                    </div>
+
+                    <div class="button-footer">
+                        <button type="button" class="btn-primary btn-next" onclick="navigateToStep(2)">
+                            அடுத்த படி / Next Step <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Grievance Info -->
+                <div class="form-step" id="step-2">
+                    <h3 class="step-title">2. புகார் விவரங்கள் / Grievance Details</h3>
+                    <p class="step-desc">புகார் செய்ய விரும்பும் துறை மற்றும் விவரங்களை எழுதவும்.</p>
+
+                    <div class="form-group">
+                        <label for="department">அரசு துறை / Government Department <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-building input-icon"></i>
+                            <select id="department" name="department" required>
+                                <option value="" disabled selected>துறையை தேர்ந்தெடுக்கவும் / Select Department</option>
+                                <option value="வேளாண்மை மற்றும் உழவர் நலத்துறை / Agriculture & Farmers Welfare">வேளாண்மை மற்றும் உழவர் நலத்துறை / Agriculture & Farmers Welfare</option>
+                                <option value="கால்நடை, பால்வளம் & மீன்வளம் / Animal Husbandry, Dairying & Fisheries">கால்நடை, பால்வளம் & மீன்வளம் / Animal Husbandry, Dairying & Fisheries</option>
+                                <option value="பிற்படுத்தப்பட்டோர் & சிறுபான்மையினர் நலத்துறை / BC, MBC & Minorities Welfare">பிற்படுத்தப்பட்டோர் & சிறுபான்மையினர் நலத்துறை / BC, MBC & Minorities Welfare</option>
+                                <option value="கூட்டுறவு, உணவு & நுகர்வோர் பாதுகாப்பு / Co-operation, Food & Consumer Protection">கூட்டுறவு, உணவு & நுகர்வோர் பாதுகாப்பு / Co-operation, Food & Consumer Protection</option>
+                                <option value="ஆற்றல் துறை (TNEB) / Energy Department">ஆற்றல் துறை (TNEB) / Energy Department</option>
+                                <option value="சுற்றுச்சூழல் & வனத்துறை / Environment, Climate Change & Forests">சுற்றுச்சூழல் & வனத்துறை / Environment, Climate Change & Forests</option>
+                                <option value="நிதித்துறை / Finance Department">நிதித்துறை / Finance Department</option>
+                                <option value="கைத்தறி & துணிநூல் துறை / Handlooms, Textiles & Khadi">கைத்தறி & துணிநூல் துறை / Handlooms, Textiles & Khadi</option>
+                                <option value="மக்கள் நல்வாழ்வு & குடும்ப நலத்துறை / Health & Family Welfare">மக்கள் நல்வாழ்வு & குடும்ப நலத்துறை / Health & Family Welfare</option>
+                                <option value="உயர் கல்வித்துறை / Higher Education">உயர் கல்வித்துறை / Higher Education</option>
+                                <option value="நெடுஞ்சாலைகள் & சிறு துறைமுகங்கள் / Highways & Minor Ports">நெடுஞ்சாலைகள் & சிறு துறைமுகங்கள் / Highways & Minor Ports</option>
+                                <option value="உள்துறை (காவல்துறை) / Home (Police Department)">உள்துறை (காவல்துறை) / Home (Police Department)</option>
+                                <option value="வீட்டு வசதி & நகர்ப்புற வளர்ச்சி / Housing & Urban Development">வீட்டு வசதி & நகர்ப்புற வளர்ச்சி / Housing & Urban Development</option>
+                                <option value="தொழில்துறை / Industries, Investment & Commerce">தொழில்துறை / Industries, Investment & Commerce</option>
+                                <option value="தகவல் தொழில்நுட்பம் / IT & Digital Services">தகவல் தொழில்நுட்பம் / IT & Digital Services</option>
+                                <option value="தொழிலாளர் நலன் / Labour Welfare & Skill Development">தொழிலாளர் நலன் / Labour Welfare & Skill Development</option>
+                                <option value="சட்டத்துறை / Law Department">சட்டத்துறை / Law Department</option>
+                                <option value="நகராட்சி நிர்வாகம் & குடிநீர் வழங்கல் / Municipal Administration & Water Supply">நகராட்சி நிர்வாகம் & குடிநீர் வழங்கல் / Municipal Administration & Water Supply</option>
+                                <option value="வருவாய் & பேரிடர் மேலாண்மை / Revenue & Disaster Management">வருவாய் & பேரிடர் மேலாண்மை / Revenue & Disaster Management</option>
+                                <option value="ஊரக வளர்ச்சி & ஊராட்சித்துறை / Rural Development & Panchayat Raj">ஊரக வளர்ச்சி & ஊராட்சித்துறை / Rural Development & Panchayat Raj</option>
+                                <option value="பள்ளிக் கல்வித்துறை / School Education">பள்ளிக் கல்வித்துறை / School Education</option>
+                                <option value="சமூக நலன் & மகளிர் உரிமை / Social Welfare & Women Empowerment">சமூக நலன் & மகளிர் உரிமை / Social Welfare & Women Empowerment</option>
+                                <option value="தமிழ் வளர்ச்சி & செய்தித்துறை / Tamil Development & Information">தமிழ் வளர்ச்சி & செய்தித்துறை / Tamil Development & Information</option>
+                                <option value="சுற்றுலா & அறநிலையங்கள் / Tourism, Culture & Religious Endowments">சுற்றுலா & அறநிலையங்கள் / Tourism, Culture & Religious Endowments</option>
+                                <option value="போக்குவரத்துத்துறை / Transport Department">போக்குவரத்துத்துறை / Transport Department</option>
+                                <option value="மாற்றுத்திறனாளிகள் நலத்துறை / Welfare of Differently Abled Persons">மாற்றுத்திறனாளிகள் நலத்துறை / Welfare of Differently Abled Persons</option>
+                                <option value="விளையாட்டு மேம்பாட்டுத்துறை / Youth Welfare & Sports Development">விளையாட்டு மேம்பாட்டுத்துறை / Youth Welfare & Sports Development</option>
+                            </select>
+                        </div>
+                        <span class="error-msg" id="department-error">அரசு துறையை தேர்ந்தெடுக்கவும் / Department selection is required</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">புகாரின் பொருள் / Subject of Grievance <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-heading input-icon"></i>
+                            <input type="text" id="subject" name="subject" placeholder="எ.கா. குடிநீர் பற்றாக்குறை, சேதமடைந்த சாலை" required>
+                        </div>
+                        <span class="error-msg" id="subject-error">பொருள் தேவை / Subject is required</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="complaintText">புகார் விவரம் / Complaint Description <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-edit input-icon textarea-icon"></i>
+                            <textarea id="complaintText" name="complaintText" rows="6" placeholder="உங்கள் புகாரை விரிவாக எழுதவும் (இடம், நாள், பிரச்சினை மற்றும் பிற விவரங்கள்)" required></textarea>
+                        </div>
+                        <span class="error-msg" id="complaintText-error">விவரங்கள் தேவை / Description is required</span>
+                    </div>
+
+                    <div class="button-footer">
+                        <button type="button" class="btn-secondary btn-prev" onclick="navigateToStep(1)">
+                            <i class="fas fa-arrow-left"></i> முந்தைய படி / Back
+                        </button>
+                        <button type="button" class="btn-primary btn-next" onclick="navigateToStep(3)">
+                            சரிபார்க்க / Review <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Review & Submit -->
+                <div class="form-step" id="step-3">
+                    <h3 class="step-title">3. விவரங்களைச் சரிபார்க்கவும் / Review Your Grievance</h3>
+                    <p class="step-desc">நீங்கள் உள்ளிட்ட விவரங்கள் சரியானதா என உறுதிப்படுத்திக் கொண்டு சமர்ப்பிக்கவும்.</p>
+
+                    <!-- Summary Card -->
+                    <div class="review-card">
+                        <div class="review-section">
+                            <h4><i class="fas fa-id-card"></i> தொடர்பு விவரங்கள் / Contact Details</h4>
+                            <div class="review-grid">
+                                <div class="review-item"><strong>பெயர் / Name:</strong> <span id="review-name"></span></div>
+                                <div class="review-item"><strong>கைபேசி / Mobile:</strong> <span id="review-contact"></span></div>
+                                <div class="review-item"><strong>மின்னஞ்சல் / Email:</strong> <span id="review-email"></span></div>
+                                <div class="review-item"><strong>மாவட்டம் / District:</strong> <span id="review-district"></span></div>
+                                <div class="review-item full-width"><strong>முகவரி / Address:</strong> <span id="review-address"></span></div>
+                            </div>
+                        </div>
+
+                        <div class="review-section">
+                            <h4><i class="fas fa-file-invoice"></i> புகாரின் விவரங்கள் / Grievance Details</h4>
+                            <div class="review-grid">
+                                <div class="review-item full-width"><strong>துறை / Department:</strong> <span id="review-department"></span></div>
+                                <div class="review-item full-width"><strong>பொருள் / Subject:</strong> <span id="review-subject"></span></div>
+                                <div class="review-item full-width">
+                                    <strong>விளக்கம் / Description:</strong>
+                                    <div class="review-text-block" id="review-text"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="declaration" name="declaration" required>
+                        <label for="declaration">
+                            மேற்கூறிய அனைத்து விவரங்களும் உண்மையானவை என்று நான் உறுதியளிக்கிறேன். / I declare that all the details provided above are true to the best of my knowledge. <span class="required">*</span>
+                        </label>
+                    </div>
+                    <span class="error-msg" id="declaration-error">உறுதிமொழி பெட்டியைத் தேர்ந்தெடுக்கவும் / Declaration must be accepted</span>
+
+                    <div class="button-footer">
+                        <button type="button" class="btn-secondary btn-prev" onclick="navigateToStep(2)">
+                            <i class="fas fa-arrow-left"></i> திருத்தவும் / Edit
+                        </button>
+                        <button type="submit" class="btn-submit" id="submitBtn">
+                            <span id="btnText">புகாரைப் பதிவு செய்க / Submit Complaint</span>
+                            <span id="btnLoader" class="loader hidden"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Success Overlay Screen -->
+            <div class="success-screen hidden" id="successScreen">
+                <div class="success-icon-wrapper">
+                    <div class="success-circle">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+                <h2>புகார் வெற்றிகரமாகப் பதியப்பட்டது!</h2>
+                <h3>Grievance Registered Successfully!</h3>
+                <p>உங்களது புகார் மனு தயாரிக்கப்பட்டு, உரிய துறைக்கு பரிந்துரைக்கப்படும். இதற்கான கண்காணிப்பு எண் கீழே தரப்பட்டுள்ளது.</p>
+                <p class="en-sub">Your complaint document has been compiled and will be forwarded to the respective department by our IT Wing. Your tracking ID is:</p>
+                
+                <div class="tracking-box">
+                    <span class="tracking-id" id="displayTrackingId">TVK-26-XXXX</span>
+                    <button class="btn-copy" onclick="copyTrackingId()" title="Copy ID">
+                        <i class="far fa-copy"></i> Copy
+                    </button>
+                </div>
+
+                <div class="success-info">
+                    <p><i class="fab fa-instagram"></i> Follow us for updates: <strong>@26_tvk_it_wing_</strong></p>
+                </div>
+
+                <button class="btn-primary" onclick="resetForm()">
+                    புதிய புகாரைப் பதிவு செய்ய / Register New Grievance
+                </button>
+            </div>
+        </main>
+        
+        <footer class="footer-note">
+            <p>© 2026 தமிழக வெற்றி கழகம் (TVK) - IT Wing Complaint Redressal. Developed for Social Welfare.</p>
+        </footer>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

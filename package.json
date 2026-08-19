@@ -1,0 +1,19 @@
+{
+  "name": "tvk-complaint-portal",
+  "version": "1.0.0",
+  "description": "Grievance Redressal Portal for Tamil Nadu Departments by TVK IT Wing",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "docx": "^8.5.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "nodemailer": "^9.0.5",
+    "uuid": "^9.0.1",
+    "xlsx": "^0.18.5"
+  }
+}
