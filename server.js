@@ -18,18 +18,28 @@ const ADMIN_EMAIL = process.env.ADMIN_EMAIL || '26tvkitwing@gmail.com';
 const otpCache = {}; // InMemory Cache for OTPs (Key: email, Value: { otp, expires })
 
 // CORS Configuration
-const allowedOrigins = process.env.ADMIN_PORTAL_URL ? process.env.ADMIN_PORTAL_URL.split(',') : ['http://localhost:3001', 'http://127.0.0.1:3001'];
+const allowedOrigins = process.env.ADMIN_PORTAL_URL ? process.env.ADMIN_PORTAL_URL.split(',').map(o => o.trim().replace(/\/$/, '')) : ['http://localhost:3001', 'http://127.0.0.1:3001'];
 app.use(cors({
     origin: function(origin, callback) {
         if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) === -1) {
-            // Allow any local server for testing
-            if (origin.startsWith('http://localhost') || origin.startsWith('http://127.0.0.1')) {
-                return callback(null, true);
-            }
-            return callback(new Error('CORS Policy: Origin not allowed.'), false);
+        const cleanOrigin = origin.trim().replace(/\/$/, '');
+        
+        // 1. Allow local dev
+        if (cleanOrigin.startsWith('http://localhost') || cleanOrigin.startsWith('http://127.0.0.1')) {
+            return callback(null, true);
         }
-        return callback(null, true);
+        
+        // 2. Allow configured admin domains
+        if (allowedOrigins.includes(cleanOrigin)) {
+            return callback(null, true);
+        }
+        
+        // 3. Auto-allow any Render subdomains for ease of deployment
+        if (cleanOrigin.endsWith('.onrender.com')) {
+            return callback(null, true);
+        }
+        
+        return callback(new Error('CORS Policy: Origin not allowed.'), false);
     },
     credentials: true
 }));
