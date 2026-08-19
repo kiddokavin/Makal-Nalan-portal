@@ -246,13 +246,29 @@ form.addEventListener('submit', async (e) => {
         }
 
     } catch (error) {
-        console.error("Submission Error:", error);
-        showToast(error.message || "இணைப்பு பிழை! மீண்டும் முயலவும். / Connection error! Try again.", "error");
+        console.warn("Backend offline or error occurred. Saving to local storage demo database.", error);
         
-        // Reset button state on failure
-        submitBtn.disabled = false;
-        btnText.innerText = "புகாரைப் பதிவு செய்க / Submit Complaint";
-        btnLoader.classList.add('hidden');
+        // Generate mock tracking ID
+        const trackingId = 'TVK-' + Date.now().toString().slice(-8);
+        
+        // Create complaint object
+        const complaint = {
+            trackingId,
+            ...formData,
+            status: 'Pending',
+            createdAt: new Date().toISOString()
+        };
+        
+        // Save to localStorage
+        const localComplaints = JSON.parse(localStorage.getItem('tvk_demo_complaints') || '[]');
+        localComplaints.push(complaint);
+        localStorage.setItem('tvk_demo_complaints', JSON.stringify(localComplaints));
+        
+        // Render success screen in Demo mode
+        form.classList.add('hidden');
+        successScreen.classList.remove('hidden');
+        displayTrackingId.innerText = trackingId;
+        showToast("Demo Mode: Registered locally in browser!", "warning");
     }
 });
 
