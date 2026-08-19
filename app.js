@@ -1,4 +1,5 @@
 // State variables
+const BACKEND_URL = window.location.hostname.includes('github.io') ? 'https://makal-nalan-portal.onrender.com' : '';
 let currentStep = 1;
 const totalSteps = 3;
 
@@ -224,7 +225,7 @@ form.addEventListener('submit', async (e) => {
     };
 
     try {
-        const response = await fetch('/api/complaints', {
+        const response = await fetch(`${BACKEND_URL}/api/complaints`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

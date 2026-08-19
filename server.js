@@ -18,7 +18,7 @@ const ADMIN_EMAIL = process.env.ADMIN_EMAIL || '26tvkitwing@gmail.com';
 const otpCache = {}; // InMemory Cache for OTPs (Key: email, Value: { otp, expires })
 
 // CORS Configuration
-const allowedOrigins = process.env.ADMIN_PORTAL_URL ? process.env.ADMIN_PORTAL_URL.split(',') : ['http://localhost:3001', 'http://127.0.0.1:3001'];
+const allowedOrigins = process.env.ADMIN_PORTAL_URL ? process.env.ADMIN_PORTAL_URL.split(',') : ['http://localhost:3001', 'http://127.0.0.1:3001', 'https://kiddokavin.github.io'];
 app.use(cors({
     origin: function(origin, callback) {
         if (!origin) return callback(null, true);
